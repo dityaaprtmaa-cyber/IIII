@@ -1,0 +1,91 @@
+:root {
+    --primary-pink: #ffb7c5;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    overflow: hidden;
+    /* BACKGROUND GRADIENT BERGERAK */
+    background: linear-gradient(-45deg, #001524, #15616d, #001524, #213547);
+    background-size: 400% 400%;
+    animation: gradient-bg 15s ease infinite;
+}
+
+@keyframes gradient-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card-container {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 40px 25px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    transition: all 0.5s ease;
+}
+
+/* AMPLOP RAKSASA */
+.envelope {
+    font-size: 110px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 15px rgba(255, 183, 197, 0.4));
+    animation: float 3s infinite ease-in-out;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+.envelope:hover { transform: scale(1.1) rotate(5deg); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.hidden { display: none; opacity: 0; }
+
+/* GIF STYLE */
+.step-gif { width: 80px; height: auto; margin-bottom: 15px; }
+.story-gif { width: 100px; margin-bottom: 20px; }
+
+/* SCROLL & TYPEWRITER */
+.scroll-container {
+    max-height: 160px; overflow: hidden; margin: 20px 0;
+    scroll-behavior: smooth; text-align: left;
+}
+
+#typewriterLong, #typewriterStory {
+    white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7;
+    border-right: 2px solid var(--primary-pink);
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink { 50% { border-color: transparent; } }
+
+.heart-icon { font-size: 50px; color: #ff4d6d; margin-bottom: 10px; animation: heartbeat 1.2s infinite; }
+@keyframes heartbeat { 50% { transform: scale(1.2); } }
+
+/* GAME GRID */
+.memory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+.memory-card { width: 85px; height: 85px; position: relative; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
+.memory-card.flipped { transform: rotateY(180deg); }
+.card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+.card-back { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+.card-front { background: white; transform: rotateY(180deg); }
+
+button { background: white; color: #15616d; border: none; padding: 12px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+button:hover { background: var(--primary-pink); color: white; }
+
+.fade-in { animation: fadeIn 0.8s forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
